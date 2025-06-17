@@ -1,0 +1,29 @@
+<div class="view">
+  <div class="layout layout--row layout--top">
+    <!-- Monitors Grid -->
+    <div class="grid grid--cols-1 gap--medium">
+      {%- for monitor in monitors limit: 5 -%}
+        <div class="{{ item_classes }}">
+          <div class="meta"></div>
+          <div class="content">
+            <div class="grid grid--cols-5">
+              <div class="col--span-4">
+                <div class="py--1">
+                  <div class="label label--medium clamp--1">{{ monitor.friendly_name }}</div>
+                  {% if monitors.size. < 3 %}
+                  <div class="label label--small clamp--1">{{ monitor.url }}</div>
+                  {% endif %}
+                </div>
+              </div>
+              <div class="col--span-1">
+                <div>
+                  {% render "status_icon" with monitor as monitor %}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+</div>
