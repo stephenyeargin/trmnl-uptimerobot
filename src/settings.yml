@@ -6,7 +6,7 @@ static_data: ''
 polling_verb: post
 polling_url: https://api.uptimerobot.com/v2/getMonitors?api_key={{ uptimerobot_api_key }}
 polling_headers: content-type=application/json
-polling_body: '{ "search": "{{ uptimerobot_search_string }}" }'
+polling_body: '{ "search": "" }'
 id: 98765
 custom_fields:
 - keyname: author_bio
@@ -21,10 +21,5 @@ custom_fields:
   name: UptimeRobot API Key
   description: Read-only API Key for UptimeRobot
   placeholder: somelongstringoeshere1234
-- keyname: uptimerobot_search_string
-  field_type: string
-  name: UptimeRobot Search String
-  description: Search string for filtering UptimeRobot monitors (optional)
-  placeholder: example.com
 name: UptimeRobot
 refresh_interval: 15
