@@ -8,8 +8,7 @@ watch:
 
 # values of custom fields (defined in src/settings.yml)
 custom_fields: {
-  uptimerobot_api_key: "{{ env.UPTIMEROBOT_API_KEY }}",
-  # uptimerobot_search_string: "transit"
+  uptimerobot_api_key: "{{ env.UPTIMEROBOT_API_KEY }}"
 }
 
 # override variables
