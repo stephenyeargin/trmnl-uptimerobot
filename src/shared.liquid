@@ -7,6 +7,14 @@
   # 9 - down
 %}
 
+<style>
+  .trmnl .item.monitor-status--0 .meta { background-image: none; background-color: slategray; }
+  .trmnl .item.monitor-status--1 .meta { }
+  .trmnl .item.monitor-status--2 .meta { }
+  .trmnl .item.monitor-status--8 .meta { background-image: none; background-color: slategray; }
+  .trmnl .item.monitor-status--9 .meta { background-image: none; background-color: black; }
+</style>
+
 {% if error.message %}
 <div class="p--4">
   <div class="label label--small">Error retrieving data:</div>
@@ -22,13 +30,9 @@
 {%- assign uptime_percentage = up_monitors | times: 100.0 | divided_by: total_monitors | round: 1 -%}
 
 {% template status_icon %}
-{%- if monitor.status == 2 -%}<div class="image"><svg width="28" height="28" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" fill="white"/><path d="M9 12l3 3 6-6" stroke="black" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>{%- endif -%}
-{%- if monitor.status == 9 -%}<div class="image"><svg width="28" height="28" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" fill="currentColor" stroke="currentColor" stroke-width="2"/><path d="M9 9l6 6M15 9l-6 6" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></div>{%- endif -%}
-{%- if monitor.status == 0 -%}<div class="image"><svg width="28" height="28" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" fill="darkgray"/><rect x="9" y="8" width="2" height="8" fill="white"/><rect x="13" y="8" width="2" height="8" fill="white"/></svg></div>{%- endif -%}
+{%- if monitor.status == 0 -%}<svg width="28" height="28" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" fill="darkgray"/><rect x="9" y="8" width="2" height="8" fill="white"/><rect x="13" y="8" width="2" height="8" fill="white"/></svg>{%- endif -%}
+{%- if monitor.status == 1 -%}<svg width="28" height="28" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" fill="darkgray"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3M12 17h.01" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>{%- endif -%}
+{%- if monitor.status == 2 -%}<svg width="28" height="28" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" fill="white"/><path d="M9 12l3 3 6-6" stroke="black" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>{%- endif -%}
+{%- if monitor.status == 8 -%}<svg width="28" height="28" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" fill="currentColor"/><path d="M12 8v4M12 16h.01" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>{%- endif -%}
+{%- if monitor.status == 9 -%}<svg width="28" height="28" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" fill="currentColor"/><path d="M9 9l6 6M15 9l-6 6" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>{%- endif -%}
 {% endtemplate %}
-
-{%- comment -%}Monitor Item Classes Helper{%- endcomment -%}
-{%- capture item_classes -%}item{%- if monitor.status == 9 or monitor.status == 0 -%} bg--gray-1{%- endif -%}{%- endcapture -%}
-
-{%- comment -%}Monitor Label Classes Helper{%- endcomment -%}
-{%- capture label_classes -%}label label--small{%- if monitor.status == 2 -%} label--inverted{%- endif -%}{%- if monitor.status == 9 -%} label--outline{%- endif -%}{%- if monitor.status == 0 -%} label--gray-out{%- endif -%}{%- endcapture -%}

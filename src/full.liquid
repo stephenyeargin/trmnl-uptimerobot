@@ -12,7 +12,7 @@
 {% endif %}
 
 {% if total_monitors <= 6 %}
-  {% assign total_columns = 1 %}
+  {% assign total_columns = 2 %}
   {% assign gap_size = 'xlarge' %}
 {% endif %}
 
@@ -21,18 +21,18 @@
     <!-- Monitors Grid -->
     <div class="grid grid--cols-{{ total_columns }} gap--{{ gap_size }}">
       {%- for monitor in monitors limit: total_monitors -%}
-        <div class="{{ item_classes }}">
-          <div class="meta"{% if monitor.status == 9 %}style="background-image: none; background-color: black;"{% endif %}></div>
+        <div class="item monitor-status--{{ monitor.status }}">
+          <div class="meta {% if monitor.status == 9 %}meta--black{% endif %}"></div>
           <div class="content">
             <div class="grid grid--cols-5">
               <div class="col--span-4">
                 <div>
                   <div class="label {% if total_monitors >= 6 %}label--medium{% else %}label--large{% endif %} clamp--1 {% if monitor.status == 0 %}text--gray-2{% endif %}{% if monitor.status == 9 %}label--inverted{% endif %}">{{ monitor.friendly_name }}</div>
-                  <div class="description clamp--1 {% if monitor.status == 0 %}text--gray-2{% endif %}">{{ monitor.url | remove_first: 'https://' }}</div>
+                  <div class="description clamp--1">{{ monitor.url | remove_first: 'https://' }}</div>
                 </div>
               </div>
               <div class="col--span-1">
-                <div class="flex">
+                <div>
                   {% render "status_icon" with monitor as monitor %}
                 </div>
               </div>
@@ -44,7 +44,7 @@
   </div>
 
   <div class="title_bar">
-    <img class="image image-stroke image-stroke--small" src="https://avatars.githubusercontent.com/u/4648252?s=200&v=4" width="28" height="28" />
+    <img class="image image-dither image-stroke image-stroke--small" src="https://avatars.githubusercontent.com/u/4648252?s=200&v=4" width="28" height="28" />
     <span class="title">{{ up_monitors }} up, {{ down_monitors }} down, {{ paused_monitors }} paused</span>
     <span class="instance">{{ trmnl.plugin_settings.instance_name | default: 'My Sites' }}</span>
   </div>

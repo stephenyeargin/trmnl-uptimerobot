@@ -19,12 +19,33 @@ variables:
     }
   }
   # monitors:
-  #   - friendly_name: Example Website 1
-  #     url: https://site1.example.com
-  #     status: 2
-  #   - friendly_name: Example Website 2
-  #     url: https://site2.example.com
-  #     status: 0
-  #   - friendly_name: Example Website 3
-  #     url: https://site3.example.com
-  #     status: 9
+  # - friendly_name: Example Website 0
+  #   url: https://paused.example.com
+  #   status: 0
+  # - friendly_name: Example Website 1
+  #   url: https://not-checked-yet.example.com
+  #   status: 1
+  # - friendly_name: Example Website 2
+  #   url: https://up.example.com
+  #   status: 2
+  # - friendly_name: Example Website 8
+  #   url: https://seems-down.example.com
+  #   status: 8
+  # - friendly_name: Example Website 9
+  #   url: https://down.example.com
+  #   status: 9
+  # - friendly_name: Example Website 2
+  #   url: https://up.example.com
+  #   status: 2
+  # - friendly_name: Example Website 2
+  #   url: https://up.example.com
+  #   status: 2
+  # - friendly_name: Example Website 2
+  #   url: https://up.example.com
+  #   status: 2
+  # - friendly_name: Example Website 2
+  #   url: https://up.example.com
+  #   status: 2
+  # - friendly_name: Example Website 2
+  #   url: https://up.example.com
+  #   status: 2

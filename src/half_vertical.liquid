@@ -3,14 +3,14 @@
     <!-- Monitors Grid -->
     <div class="grid grid--cols-1 gap--medium">
       {%- for monitor in monitors limit: 10 -%}
-        <div class="{{ item_classes }}">
-          <div class="meta"{% if monitor.status == 9 %}style="background-image: none; background-color: black;"{% endif %}></div>
+        <div class="item monitor-status--{{ monitor.status }}">
+          <div class="meta"></div>
           <div class="content">
             <div class="grid grid--cols-5">
               <div class="col--span-4">
                 <div class="py--1">
                   <div class="label label--medium clamp--1 {% if monitor.status == 0 %}text--gray-2{% endif %}{% if monitor.status == 9 %}label--inverted{% endif %}">{{ monitor.friendly_name }}</div>
-                  {% if monitors.size. < 5 %}
+                  {% if monitors.size < 5 %}
                   <div class="label label--small clamp--1">{{ monitor.url | remove_first: 'https://' }}</div>
                   {% endif %}
                 </div>

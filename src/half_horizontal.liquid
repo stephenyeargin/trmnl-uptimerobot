@@ -3,8 +3,8 @@
     <!-- Monitors Grid -->
     <div class="grid grid--cols-3 gap--medium">
       {%- for monitor in monitors limit: 18 -%}
-        <div class="{{ item_classes }}">
-          <div class="meta"{% if monitor.status == 9 %}style="background-image: none; background-color: black;"{% endif %}></div>
+        <div class="item monitor-status--{{ monitor.status }}">
+          <div class="meta {% if monitor.status == 9 %}meta--black{% endif %}"></div>
           <div class="content">
             <div class="grid grid--cols-5">
               <div class="col--span-4">
