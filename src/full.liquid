@@ -27,7 +27,7 @@
             <div class="grid grid--cols-5">
               <div class="col--span-4">
                 <div>
-                  <div class="label {% if total_monitors >= 6 %}label--medium{% else %}label--large{% endif %} clamp--1 {% if monitor.status == 0 %}text--gray-2{% endif %}{% if monitor.status == 9 %}label--inverted{% endif %}">{{ monitor.friendly_name }}</div>
+                  <div class="label {% if total_monitors >= 6 %}label--medium{% else %}label--large{% endif %} clamp--1 {% if monitor.status == 0 %}label--gray-out{% endif %}{% if monitor.status == 9 %}label--inverted{% endif %}">{{ monitor.friendly_name }}</div>
                   <div class="description clamp--1">{{ monitor.url | remove_first: 'https://' }}</div>
                 </div>
               </div>

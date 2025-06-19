@@ -9,7 +9,7 @@
             <div class="grid grid--cols-5">
               <div class="col--span-4">
                 <div class="py--1">
-                  <div class="label label--medium clamp--1 {% if monitor.status == 0 %}text--gray-2{% endif %}{% if monitor.status == 9 %}label--inverted{% endif %}">{{ monitor.friendly_name }}</div>
+                  <div class="label label--medium clamp--1 {% if monitor.status == 0 %}label--gray-out{% endif %}{% if monitor.status == 9 %}label--inverted{% endif %}">{{ monitor.friendly_name }}</div>
                   {% if monitors.size <= 12 %}
                   <div class="label label--small clamp--1">{{ monitor.url | remove_first: 'https://' }}</div>
                   {% endif %}
