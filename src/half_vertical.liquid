@@ -1,37 +1,35 @@
-<div class="view">
-  <div class="layout layout--row layout--top">
-    <!-- Monitors Grid -->
-    <div class="grid grid--cols-1 gap--medium">
-      {%- for monitor in monitors limit: 10 -%}
-        <div class="item monitor-status--{{ monitor.status }}">
-          <div class="meta"></div>
-          <div class="content">
-            <div class="grid grid--cols-5">
-              <div class="col--span-4">
-                <div class="py--1">
-                  <div class="label label--medium clamp--1 {% if monitor.status == 0 %}label--gray-out{% endif %}{% if monitor.status == 9 %}label--inverted{% endif %}">{{ monitor.friendly_name }}</div>
-                  {% if monitors.size < 5 %}
-                  <div class="label label--small clamp--1">{{ monitor.url | remove_first: 'https://' }}</div>
-                  {% endif %}
-                </div>
+<div class="layout layout--row layout--top">
+  <!-- Monitors Grid -->
+  <div class="grid grid--cols-1 gap--medium">
+    {%- for monitor in monitors limit: 10 -%}
+      <div class="item monitor-status--{{ monitor.status }}">
+        <div class="meta"></div>
+        <div class="content">
+          <div class="grid grid--cols-5">
+            <div class="col--span-4">
+              <div class="py--1">
+                <div class="label label--medium clamp--1 {% if monitor.status == 0 %}label--gray-out{% endif %}{% if monitor.status == 9 %}label--inverted{% endif %}">{{ monitor.friendly_name }}</div>
+                {% if monitors.size < 5 %}
+                <div class="label label--small clamp--1">{{ monitor.url | remove_first: 'https://' }}</div>
+                {% endif %}
               </div>
-              <div class="col--span-1">
-                <div>
-                  {% render "status_icon" with monitor as monitor %}
-                </div>
+            </div>
+            <div class="col--span-1">
+              <div>
+                {% render "status_icon" with monitor as monitor %}
               </div>
             </div>
           </div>
         </div>
-      {%- endfor -%}
-    </div>
+      </div>
+    {%- endfor -%}
   </div>
-
-  {% if monitors.size <= 7 %}
-  <div class="title_bar">
-    <img class="image image-stroke image-stroke--small" src="https://avatars.githubusercontent.com/u/4648252?s=200&v=4" width="28" height="28" />
-    <span class="title">{{ up_monitors }} up, {{ down_monitors }} down, {{ paused_monitors }} paused</span>
-    <span class="instance">{{ trmnl.plugin_settings.instance_name | default: 'My Sites' }}</span>
-  </div>
-  {% endif %}
 </div>
+
+{% if monitors.size <= 7 %}
+<div class="title_bar">
+  <img class="image image-stroke image-stroke--small" src="https://avatars.githubusercontent.com/u/4648252?s=200&v=4" width="28" height="28" />
+  <span class="title">{{ up_monitors }} up, {{ down_monitors }} down, {{ paused_monitors }} paused</span>
+  <span class="instance">{{ trmnl.plugin_settings.instance_name | default: 'My Sites' }}</span>
+</div>
+{% endif %}
