@@ -20,13 +20,19 @@
   <!-- Monitors Grid -->
   <div class="grid grid--cols-{{ total_columns }} gap--{{ gap_size }}">
     {%- for monitor in monitors limit: total_monitors -%}
-      <div class="item monitor-status--{{ monitor.status }}">
-        <div class="meta {% if monitor.status == 9 %}meta--black{% endif %}"></div>
+      {%- assign status_class = monitor.status -%}
+      {%- if monitor.status == "PAUSED" -%}{%- assign status_class = 0 -%}{%- endif -%}
+      {%- if monitor.status == "STARTED" -%}{%- assign status_class = 1 -%}{%- endif -%}
+      {%- if monitor.status == "UP" -%}{%- assign status_class = 2 -%}{%- endif -%}
+      {%- if monitor.status == "LOOKS_DOWN" -%}{%- assign status_class = 8 -%}{%- endif -%}
+      {%- if monitor.status == "DOWN" -%}{%- assign status_class = 9 -%}{%- endif -%}
+      <div class="item monitor-status--{{ status_class }}">
+        <div class="meta {% if status_class == 9 %}meta--black{% endif %}"></div>
         <div class="content">
           <div class="grid grid--cols-5">
             <div class="col--span-4">
               <div>
-                <div class="label {% if total_monitors >= 6 %}label--medium{% else %}label--large{% endif %} clamp--1 {% if monitor.status == 0 %}label--gray-out{% endif %}{% if monitor.status == 9 %}label--inverted{% endif %}">{{ monitor.friendly_name }}</div>
+                <div class="label {% if total_monitors >= 6 %}label--medium{% else %}label--large{% endif %} clamp--1 {% if status_class == 0 %}label--gray-out{% endif %}{% if status_class == 9 %}label--inverted{% endif %}">{{ monitor.friendlyName | default: monitor.friendly_name }}</div>
                 <div class="description clamp--1">{{ monitor.url | remove_first: 'https://' }}</div>
               </div>
             </div>

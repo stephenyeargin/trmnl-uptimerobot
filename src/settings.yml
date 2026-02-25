@@ -3,10 +3,10 @@ strategy: polling
 no_screen_padding: 'no'
 dark_mode: 'no'
 static_data: ''
-polling_verb: post
-polling_url: https://api.uptimerobot.com/v2/getMonitors?api_key={{ uptimerobot_api_key }}
-polling_headers: content-type=application/json
-polling_body: '{ "search": "" }'
+polling_verb: get
+polling_url: https://api.uptimerobot.com/v3/monitors
+polling_headers: authorization=Bearer%20{{ uptimerobot_api_key }}
+polling_body: ''
 id: 98765
 custom_fields:
 - keyname: author_bio
@@ -18,8 +18,8 @@ custom_fields:
   email_address: stephen@yearg.in
 - keyname: uptimerobot_api_key
   field_type: string
-  name: UptimeRobot API Key
-  description: Read-only API Key for UptimeRobot
-  placeholder: somelongstringoeshere1234
+  name: UptimeRobot Authorization Header
+  description: Create a read-only Main API Key <a href="https://dashboard.uptimerobot.com/integrations" class="underline">here</a>.
+  placeholder: somelongstringgoeshere1234
 name: UptimeRobot
 refresh_interval: 15
