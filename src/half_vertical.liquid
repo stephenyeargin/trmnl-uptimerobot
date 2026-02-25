@@ -9,20 +9,17 @@
       {%- if monitor.status == "LOOKS_DOWN" -%}{%- assign status_class = 8 -%}{%- endif -%}
       {%- if monitor.status == "DOWN" -%}{%- assign status_class = 9 -%}{%- endif -%}
       <div class="item monitor-status--{{ status_class }}">
-        <div class="meta {% if status_class == 9 %}meta--black{% endif %}"></div>
+        <div class="meta {% if status_class == 9 %}bg--black{% endif %} w--7 px--1">
+          {% render "status_icon" with monitor as monitor %}
+        </div>
         <div class="content">
-          <div class="grid grid--cols-5">
-            <div class="col--span-4">
+          <div class="flex flex--row flex--between gap">
+            <div class="grow">
               <div class="py--1">
                 <div class="label label--medium clamp--1 {% if status_class == 0 %}label--gray-out{% endif %}{% if status_class == 9 %}label--inverted{% endif %}">{{ monitor.friendlyName | default: monitor.friendly_name }}</div>
                 {% if monitors.size < 5 %}
                 <div class="label label--small clamp--1">{{ monitor.url | remove_first: 'https://' }}</div>
                 {% endif %}
-              </div>
-            </div>
-            <div class="col--span-1">
-              <div>
-                {% render "status_icon" with monitor as monitor %}
               </div>
             </div>
           </div>
