@@ -17,7 +17,7 @@ custom_fields:
   learn_more_url: https://uptimerobot.com/
   email_address: stephen@yearg.in
 - keyname: uptimerobot_api_key
-  field_type: string
+  field_type: password
   name: UptimeRobot Authorization Header
   description: Create a read-only Main API Key <a href="https://dashboard.uptimerobot.com/integrations" class="underline">here</a>.
   placeholder: somelongstringgoeshere1234
