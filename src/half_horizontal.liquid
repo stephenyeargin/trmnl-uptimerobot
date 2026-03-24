@@ -1,7 +1,14 @@
 <div class="layout layout--row layout--top">
   <!-- Monitors Grid -->
-  <div class="grid grid--cols-3 gap--medium">
-    {%- for monitor in monitors limit: 18 -%}
+  <div
+    class="columns"
+    data-overflow="true"
+    data-overflow-max-cols="{% if total_monitors < 10 %}1{% else %}3{% endif %}"
+    data-overflow-max-cols-lg="{% if total_monitors < 10 %}2{% else %}3{% endif %}"
+    data-overflow-counter="true"
+  >
+    <div class="column">
+      {%- for monitor in monitors -%}
       <div class="item">
         <div class="meta {% if monitor.status == "DOWN" %}bg--black{% endif %} w--7 px--1">
           {% render "status_icon" with monitor as monitor %}
@@ -10,16 +17,17 @@
           <div class="flex flex--row flex--between gap">
             <div class="grow">
               <div class="py--1">
-                <div class="label label--medium clamp--1">{{ monitor.friendlyName | default: monitor.friendly_name }}</div>
+                <div class="label label--medium" data-clamp="1">{{ monitor.friendlyName | default: monitor.friendly_name }}</div>
                 {% if monitors.size <= 12 %}
-                <div class="label label--small clamp--1">{{ monitor.url | remove_first: 'https://' }}</div>
+                <div class="label label--small" data-clamp="1">{{ monitor.url | remove_first: 'https://' }}</div>
                 {% endif %}
               </div>
             </div>
           </div>
         </div>
       </div>
-    {%- endfor -%}
+      {%- endfor -%}
+    </div>
   </div>
 </div>
 

@@ -19,33 +19,153 @@ variables:
     }
   }
   # monitors:
-  # - friendlyName: Example Website 0
-  #   url: https://paused.example.com
-  #   status: PAUSED
-  # - friendlyName: Example Website 1
+  # - friendlyName: Example Website 1 With A Very Long Title
   #   url: https://not-checked-yet.example.com
   #   status: STARTED
   # - friendlyName: Example Website 2
   #   url: https://up.example.com
   #   status: UP
-  # - friendlyName: Example Website 8
+  # - friendlyName: Example Website 3
   #   url: https://seems-down.example.com
   #   status: LOOKS_DOWN
-  # - friendlyName: Example Website 9
+  # - friendlyName: Example Website 4
   #   url: https://down.example.com
   #   status: DOWN
-  # - friendlyName: Example Website 2
+  # - friendlyName: Example Website 5
   #   url: https://up.example.com
   #   status: UP
-  # - friendlyName: Example Website 2
+  # - friendlyName: Example Website 6
   #   url: https://up.example.com
   #   status: UP
-  # - friendlyName: Example Website 2
+  # - friendlyName: Example Website 7
   #   url: https://up.example.com
   #   status: UP
-  # - friendlyName: Example Website 2
+  # - friendlyName: Example Website 8
   #   url: https://up.example.com
   #   status: UP
-  # - friendlyName: Example Website 2
+  # - friendlyName: Example Website 9
   #   url: https://up.example.com
   #   status: UP
+  # - friendlyName: Example Website 10
+  #   url: https://paused.example.com
+  #   status: PAUSED
+  # - friendlyName: Example Website 11
+  #   url: https://not-checked-yet.example.com
+  #   status: STARTED
+  # - friendlyName: Example Website 12
+  #   url: https://up.example.com
+  #   status: UP
+  # - friendlyName: Example Website 13
+  #   url: https://seems-down.example.com
+  #   status: LOOKS_DOWN
+  # - friendlyName: Example Website 14
+  #   url: https://down.example.com
+  #   status: DOWN
+  # - friendlyName: Example Website 15
+  #   url: https://up.example.com
+  #   status: UP
+  # - friendlyName: Example Website 16
+  #   url: https://up.example.com
+  #   status: UP
+  # - friendlyName: Example Website 17
+  #   url: https://up.example.com
+  #   status: UP
+  # - friendlyName: Example Website 18
+  #   url: https://up.example.com
+  #   status: UP
+  # - friendlyName: Example Website 19
+  #   url: https://up.example.com
+  #   status: UP
+  # - friendlyName: Example Website 20
+  #   url: https://paused.example.com
+  #   status: PAUSED
+  # - friendlyName: Example Website 21
+  #   url: https://not-checked-yet.example.com
+  #   status: STARTED
+  # - friendlyName: Example Website 22
+  #   url: https://up.example.com
+  #   status: UP
+  # - friendlyName: Example Website 23
+  #   url: https://seems-down.example.com
+  #   status: LOOKS_DOWN
+  # - friendlyName: Example Website 24
+  #   url: https://down.example.com
+  #   status: DOWN
+  # - friendlyName: Example Website 25
+  #   url: https://up.example.com
+  #   status: UP
+  # - friendlyName: Example Website 26
+  #   url: https://up.example.com
+  #   status: UP
+  # - friendlyName: Example Website 27
+  #   url: https://up.example.com
+  #   status: UP
+  # - friendlyName: Example Website 28
+  #   url: https://up.example.com
+  #   status: UP
+  # - friendlyName: Example Website 29
+  #   url: https://up.example.com
+  #   status: UP
+  # - friendlyName: Example Website 30
+  #   url: https://paused.example.com
+  #   status: PAUSED
+  # - friendlyName: Example Website 31
+  #   url: https://not-checked-yet.example.com
+  #   status: STARTED
+  # - friendlyName: Example Website 32
+  #   url: https://up.example.com
+  #   status: UP
+  # - friendlyName: Example Website 33
+  #   url: https://seems-down.example.com
+  #   status: LOOKS_DOWN
+  # - friendlyName: Example Website 34
+  #   url: https://down.example.com
+  #   status: DOWN
+  # - friendlyName: Example Website 35
+  #   url: https://up.example.com
+  #   status: UP
+  # - friendlyName: Example Website 36
+  #   url: https://up.example.com
+  #   status: UP
+  # - friendlyName: Example Website 37
+  #   url: https://up.example.com
+  #   status: UP
+  # - friendlyName: Example Website 38
+  #   url: https://up.example.com
+  #   status: UP
+  # - friendlyName: Example Website 39
+  #   url: https://up.example.com
+  #   status: UP
+  # - friendlyName: Example Website 40
+  #   url: https://paused.example.com
+  #   status: PAUSED
+  # - friendlyName: Example Website 41
+  #   url: https://not-checked-yet.example.com
+  #   status: STARTED
+  # - friendlyName: Example Website 42
+  #   url: https://up.example.com
+  #   status: UP
+  # - friendlyName: Example Website 43
+  #   url: https://seems-down.example.com
+  #   status: LOOKS_DOWN
+  # - friendlyName: Example Website 44
+  #   url: https://down.example.com
+  #   status: DOWN
+  # - friendlyName: Example Website 45
+  #   url: https://up.example.com
+  #   status: UP
+  # - friendlyName: Example Website 46
+  #   url: https://up.example.com
+  #   status: UP
+  # - friendlyName: Example Website 47
+  #   url: https://up.example.com
+  #   status: UP
+  # - friendlyName: Example Website 48
+  #   url: https://up.example.com
+  #   status: UP
+  # - friendlyName: Example Website 49
+  #   url: https://up.example.com
+  #   status: UP
+  # - friendlyName: Example Website 50
+  #   url: https://paused.example.com
+  #   status: PAUSED

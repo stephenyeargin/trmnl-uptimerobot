@@ -9,13 +9,6 @@
   # DOWN / 9
 %}
 
-{% if error.message %}
-<div class="p--4">
-  <div class="label label--small">Error retrieving data:</div>
-  <div class="title title--large">{{ error.message }}</div>
-</div>
-{% endif %}
-
 {%- comment -%}Common Monitor Statistics{%- endcomment -%}
 {%- assign total_monitors = monitors | size -%}
 {%- assign up_monitors_numeric = monitors | where: "status", 2 | size -%}
@@ -27,7 +20,6 @@
 {%- assign paused_monitors_numeric = monitors | where: "status", 0 | size -%}
 {%- assign paused_monitors_text = monitors | where: "status", "PAUSED" | size -%}
 {%- assign paused_monitors = paused_monitors_numeric | plus: paused_monitors_text -%}
-{%- assign uptime_percentage = up_monitors | times: 100.0 | divided_by: total_monitors | round: 1 -%}
 
 {% template status_icon %}
 {%- if monitor.status == 0 or monitor.status == "PAUSED" -%}<svg width="28" height="28" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" fill="darkgray"/><rect x="9" y="8" width="2" height="8" fill="white"/><rect x="13" y="8" width="2" height="8" fill="white"/></svg>{%- endif -%}
@@ -36,3 +28,17 @@
 {%- if monitor.status == 8 or monitor.status == "LOOKS_DOWN" -%}<svg width="28" height="28" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" fill="currentColor"/><path d="M12 8v4M12 16h.01" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>{%- endif -%}
 {%- if monitor.status == 9 or monitor.status == "DOWN" -%}<svg width="28" height="28" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" fill="currentColor"/><path d="M9 9l6 6M15 9l-6 6" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>{%- endif -%}
 {% endtemplate %}
+
+{% if error.message %}
+<div class="p--4">
+  <div class="label label--small">Error retrieving data:</div>
+  <div class="title title--large">{{ error.message }}</div>
+</div>
+{% endif %}
+
+{% if monitors == nil or monitors.size == 0 %}
+<div class="p--10">
+  <div class="label label--large label--underline my--3">Error retrieving data:</div>
+  <div class="title title--large">Invalid API key, or no monitors configured.</div>
+</div>
+{% endif %}
