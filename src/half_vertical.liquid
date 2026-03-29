@@ -23,7 +23,7 @@
           <div class="flex flex--row flex--between gap">
             <div class="grow">
               <div class="py--1">
-                <div class="label label--medium {% if status_class == 0 %}label--gray-out{% endif %}{% if status_class == 9 %}label--inverted{% endif %}" data-clamp="1">{{ monitor.friendlyName | default: monitor.friendly_name }}</div>
+                <div class="label label--base {% if status_class == 0 %}label--gray-out{% endif %}{% if status_class == 9 %}label--inverted{% endif %}" data-clamp="1">{{ monitor.friendlyName | default: monitor.friendly_name }}</div>
                 {% if monitors.size < 5 %}
                 <div class="label label--small" data-clamp="1">{{ monitor.url | remove_first: 'https://' }}</div>
                 {% endif %}

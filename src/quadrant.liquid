@@ -1,4 +1,3 @@
-
 <div class="layout layout--row layout--top">
   <!-- Monitors Grid -->
     <div
@@ -18,7 +17,7 @@
           <div class="flex flex--row flex--between gap">
             <div class="grow">
               <div class="py--1">
-                <div class="label label--medium" data-clamp="1">{{ monitor.friendlyName | default: monitor.friendly_name }}</div>
+                <div class="label label--base" data-clamp="1">{{ monitor.friendlyName | default: monitor.friendly_name }}</div>
                 {% if monitors.size < 3 %}
                 <div class="label label--small" data-clamp="1">{{ monitor.url | remove_first: 'https://' }}</div>
                 {% endif %}
