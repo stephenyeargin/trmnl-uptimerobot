@@ -8,7 +8,7 @@
     data-overflow-counter="true"
   >
     <div class="column">
-    {%- for monitor in monitors -%}
+    {%- for monitor in sorted_monitors -%}
       <div class="item">
         <div class="meta {% if monitor.status == "DOWN" %}bg--black{% endif %} w--7 px--1">
           {% render "status_icon" with monitor as monitor %}
