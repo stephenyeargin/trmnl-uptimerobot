@@ -14,6 +14,7 @@ custom_fields:
 - keyname: author_bio
   name: About This Plugin
   field_type: author_bio
+  category: productivity
   description: Displays the status of UptimeRobot monitors
   github_url: https://github.com/stephenyeargin/trmnl-uptimerobot
   learn_more_url: https://uptimerobot.com/
