@@ -11,29 +11,16 @@
 
 {%- comment -%}Common Monitor Statistics{%- endcomment -%}
 {%- assign total_monitors = monitors | size -%}
-{%- assign down_monitors_numeric = monitors | where: "status", 9 -%}
-{%- assign down_monitors_text = monitors | where: "status", "DOWN" -%}
-{%- assign down_monitors_sorted = down_monitors_numeric | concat: down_monitors_text -%}
-{%- assign down_monitors = down_monitors_sorted | size -%}
-{%- assign looks_down_monitors_numeric = monitors | where: "status", 8 -%}
-{%- assign looks_down_monitors_text = monitors | where: "status", "LOOKS_DOWN" -%}
-{%- assign looks_down_monitors_sorted = looks_down_monitors_numeric | concat: looks_down_monitors_text -%}
-{%- assign started_monitors_numeric = monitors | where: "status", 1 -%}
-{%- assign started_monitors_text = monitors | where: "status", "STARTED" -%}
-{%- assign started_monitors_sorted = started_monitors_numeric | concat: started_monitors_text -%}
-{%- assign paused_monitors_numeric = monitors | where: "status", 0 -%}
-{%- assign paused_monitors_text = monitors | where: "status", "PAUSED" -%}
-{%- assign paused_monitors_sorted = paused_monitors_numeric | concat: paused_monitors_text -%}
-{%- assign paused_monitors = paused_monitors_sorted | size -%}
-{%- assign up_monitors_numeric = monitors | where: "status", 2 -%}
-{%- assign up_monitors_text = monitors | where: "status", "UP" -%}
-{%- assign up_monitors_sorted = up_monitors_numeric | concat: up_monitors_text -%}
-{%- assign up_monitors = up_monitors_sorted | size -%}
-{%- assign sorted_monitors = down_monitors_sorted
-  | concat: looks_down_monitors_sorted
-  | concat: started_monitors_sorted
-  | concat: paused_monitors_sorted
-  | concat: up_monitors_sorted -%}
+{%- assign up_monitors_numeric = monitors | where: "status", 2 | size -%}
+{%- assign up_monitors_text = monitors | where: "status", "UP" | size -%}
+{%- assign up_monitors = up_monitors_numeric | plus: up_monitors_text -%}
+{%- assign down_monitors_numeric = monitors | where: "status", 9 | size -%}
+{%- assign down_monitors_text = monitors | where: "status", "DOWN" | size -%}
+{%- assign down_monitors = down_monitors_numeric | plus: down_monitors_text -%}
+{%- assign paused_monitors_numeric = monitors | where: "status", 0 | size -%}
+{%- assign paused_monitors_text = monitors | where: "status", "PAUSED" | size -%}
+{%- assign paused_monitors = paused_monitors_numeric | plus: paused_monitors_text -%}
+{%- assign sorted_monitors = monitors -%}
 
 {% template status_icon %}
 {%- if monitor.status == 0 or monitor.status == "PAUSED" -%}<svg width="28" height="28" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" fill="darkgray"/><rect x="9" y="8" width="2" height="8" fill="white"/><rect x="13" y="8" width="2" height="8" fill="white"/></svg>{%- endif -%}

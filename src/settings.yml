@@ -5,7 +5,7 @@ dark_mode: 'no'
 static_data: ''
 polling_verb: get
 framework_version: 2.3.7
-serverless_language: 
+serverless_language: javascript
 polling_url: https://api.uptimerobot.com/v3/monitors
 polling_headers: authorization=Bearer%20{{ uptimerobot_api_key }}
 polling_body: ''
