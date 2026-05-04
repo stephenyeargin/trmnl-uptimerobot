@@ -9,29 +9,7 @@
   >
     <div class="column">
     {%- for monitor in sorted_monitors -%}
-      {%- assign status_class = monitor.status -%}
-      {%- if monitor.status == "PAUSED" -%}{%- assign status_class = 0 -%}{%- endif -%}
-      {%- if monitor.status == "STARTED" -%}{%- assign status_class = 1 -%}{%- endif -%}
-      {%- if monitor.status == "UP" -%}{%- assign status_class = 2 -%}{%- endif -%}
-      {%- if monitor.status == "LOOKS_DOWN" -%}{%- assign status_class = 8 -%}{%- endif -%}
-      {%- if monitor.status == "DOWN" -%}{%- assign status_class = 9 -%}{%- endif -%}
-      <div class="item monitor-status--{{ status_class }}">
-        <div class="meta {% if status_class == 9 %}bg--black{% endif %} w--7 px--1">
-          {% render "status_icon" with monitor as monitor %}
-        </div>
-        <div class="content">
-          <div class="flex flex--row flex--between gap">
-            <div class="grow">
-              <div class="py--1">
-                <div class="label label--medium {% if status_class == 0 %}label--gray-out{% endif %}{% if status_class == 9 %}label--inverted{% endif %}" data-clamp="1">{{ monitor.friendlyName | default: monitor.friendly_name }}</div>
-                {% if monitors.size < 5 %}
-                <div class="label label--small" data-clamp="1">{{ monitor.url | remove_first: 'https://' }}</div>
-                {% endif %}
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+      {% render 'monitor' monitor: monitor %}
     {%- endfor -%}
     </div>
   </div>

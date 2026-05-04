@@ -5,27 +5,13 @@
     data-overflow="true"
     data-overflow-max-cols="{% if total_monitors < 10 %}1{% else %}3{% endif %}"
     data-overflow-max-cols-lg="{% if total_monitors < 10 %}2{% else %}3{% endif %}"
+    data-overflow-max-cols-portrait="{% if total_monitors < 10 %}1{% else %}2{% endif %}"
+    data-overflow-max-cols-lg-portrait="{% if total_monitors < 10 %}1{% else %}2{% endif %}"
     data-overflow-counter="true"
   >
     <div class="column">
       {%- for monitor in sorted_monitors -%}
-      <div class="item">
-        <div class="meta {% if monitor.status == "DOWN" %}bg--black{% endif %} w--7 px--1">
-          {% render "status_icon" with monitor as monitor %}
-        </div>
-        <div class="content">
-          <div class="flex flex--row flex--between gap">
-            <div class="grow">
-              <div class="py--1">
-                <div class="label label--medium" data-clamp="1">{{ monitor.friendlyName | default: monitor.friendly_name }}</div>
-                {% if monitors.size <= 12 %}
-                <div class="label label--small" data-clamp="1">{{ monitor.url | remove_first: 'https://' }}</div>
-                {% endif %}
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+        {% render 'monitor' monitor: monitor %}
       {%- endfor -%}
     </div>
   </div>

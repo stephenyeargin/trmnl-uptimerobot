@@ -23,11 +23,11 @@
 {%- assign sorted_monitors = monitors -%}
 
 {% template status_icon %}
-{%- if monitor.status == 0 or monitor.status == "PAUSED" -%}<svg width="28" height="28" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" fill="darkgray"/><rect x="9" y="8" width="2" height="8" fill="white"/><rect x="13" y="8" width="2" height="8" fill="white"/></svg>{%- endif -%}
-{%- if monitor.status == 1 or monitor.status == "STARTED" -%}<svg width="28" height="28" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" fill="darkgray"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3M12 17h.01" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>{%- endif -%}
+{%- if monitor.status == 0 or monitor.status == "PAUSED" -%}<svg width="28" height="28" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" fill="black"/><rect x="9" y="8" width="2" height="8" fill="white"/><rect x="13" y="8" width="2" height="8" fill="white"/></svg>{%- endif -%}
+{%- if monitor.status == 1 or monitor.status == "STARTED" -%}<svg width="28" height="28" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" fill="black"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3M12 17h.01" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>{%- endif -%}
 {%- if monitor.status == 2 or monitor.status == "UP" -%}<svg width="28" height="28" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" fill="white"/><path d="M9 12l3 3 6-6" stroke="black" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>{%- endif -%}
-{%- if monitor.status == 8 or monitor.status == "LOOKS_DOWN" -%}<svg width="28" height="28" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" fill="currentColor"/><path d="M12 8v4M12 16h.01" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>{%- endif -%}
-{%- if monitor.status == 9 or monitor.status == "DOWN" -%}<svg width="28" height="28" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" fill="currentColor"/><path d="M9 9l6 6M15 9l-6 6" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>{%- endif -%}
+{%- if monitor.status == 8 or monitor.status == "LOOKS_DOWN" -%}<svg width="28" height="28" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" fill="black"/><path d="M12 8v4M12 16h.01" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>{%- endif -%}
+{%- if monitor.status == 9 or monitor.status == "DOWN" -%}<svg width="28" height="28" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" fill="black"/><path d="M9 9l6 6M15 9l-6 6" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>{%- endif -%}
 {% endtemplate %}
 
 {% if error.message %}
@@ -43,3 +43,23 @@
   <div class="title title--large">Invalid API key, or no monitors configured.</div>
 </div>
 {% endif %}
+
+{% template monitor %}
+{% assign background_color_class = '' %}
+{% if monitor.status == "DOWN" %}{% assign background_color_class = 'bg--error' %}{% endif %}
+{% if monitor.status == "LOOKS_DOWN" %}{% assign background_color_class = 'bg--warning' %}{% endif %}
+{% if monitor.status == "STARTED" %}{% assign background_color_class = 'bg--warning' %}{% endif %}
+<div class="item">
+  <div class="meta {{ background_color_class }} w--7 px--1">
+    {% render "status_icon" with monitor as monitor %}
+  </div>
+  <div class="content">
+    <div class="flex flex--row flex--between">
+      <div class="grow">
+        <div class="label label--medium lg:label--large" data-clamp="1">{{ monitor.friendlyName | default: monitor.friendly_name }}</div>
+        <div class="description lg:description--large" data-clamp="1">{{ monitor.url | remove_first: 'https://' }}</div>
+      </div>
+      </div>
+  </div>
+</div>
+{% endtemplate %}
