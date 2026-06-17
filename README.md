@@ -1,6 +1,6 @@
 # UptimeRobot for TRMNL
 
-[![Build and Deploy](https://github.com/stephenyeargin/trmnl-uptimerobot/actions/workflows/build.yml/badge.svg)](https://github.com/stephenyeargin/trmnl-uptimerobot/actions/workflows/build.yml)
+[![Build and Deploy](https://github.com/stephenyeargin/trmnl-uptimerobot/actions/workflows/build.yml/badge.svg)](https://github.com/stephenyeargin/trmnl-uptimerobot/actions/workflows/build.yml) [![TRMNL Recipe Connections](https://trmnl-badges.gohk.xyz/badge/connections?recipe=98765)](https://trmnl.com/recipes/98765)
 
 ![promo](assets/promo.png)
 
