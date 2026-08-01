@@ -25,4 +25,5 @@ custom_fields:
   description: Create a read-only Main API Key <a href="https://dashboard.uptimerobot.com/integrations" class="underline">here</a>.
   placeholder: somelongstringgoeshere1234
 name: UptimeRobot
+description: Monitor uptime status for UptimeRobot checks
 refresh_interval: 15
