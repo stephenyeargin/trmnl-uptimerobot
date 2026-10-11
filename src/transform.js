@@ -3,7 +3,12 @@ function transform(input) {
     ? input.data
     : Array.isArray(input.monitors)
       ? input.monitors
-      : [];
+      : null;
+
+  const errorMessage = (input.error && input.error.message)
+    || (typeof input.error === "string" && input.error)
+    || input.message
+    || (monitors === null ? "Unexpected response from UptimeRobot" : null);
 
   const statusToString = (status) => {
     if (typeof status === "string") return status.toUpperCase();
@@ -25,7 +30,7 @@ function transform(input) {
     return status;
   };
 
-  const compactMonitors = monitors.map((monitor) => ({
+  const compactMonitors = (monitors || []).map((monitor) => ({
     friendlyName: monitor.friendlyName || monitor.friendly_name || "",
     url: String(monitor.url || "").replace(/^https?:\/\//i, ""),
     status: statusToNumber(monitor.status),
@@ -52,7 +57,7 @@ function transform(input) {
 
   return {
     data: sorted,
-    error: input.error && input.error.message ? { message: input.error.message } : {},
+    error: errorMessage ? { message: String(errorMessage) } : {},
     trmnl: input.trmnl && input.trmnl.plugin_settings
       ? { plugin_settings: { instance_name: input.trmnl.plugin_settings.instance_name } }
       : {},

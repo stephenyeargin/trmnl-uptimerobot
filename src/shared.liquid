@@ -45,18 +45,20 @@
 </svg>
 {% endcapture %}
 
+{% unless error.message %}
 {% if monitors == nil or monitors.size == 0 %}
 <div class="p--10">
   <div class="label label--large label--underline my--3">Error retrieving data:</div>
   <div class="title title--large">Invalid API key, or no monitors configured.</div>
 </div>
 {% endif %}
+{% endunless %}
 
 {% template monitor %}
 {% assign background_color_class = '' %}
-{% if monitor.status == "DOWN" %}{% assign background_color_class = 'bg--error' %}{% endif %}
-{% if monitor.status == "LOOKS_DOWN" %}{% assign background_color_class = 'bg--warning' %}{% endif %}
-{% if monitor.status == "STARTED" %}{% assign background_color_class = 'bg--warning' %}{% endif %}
+{% if monitor.status == 9 or monitor.status == "DOWN" %}{% assign background_color_class = 'bg--error' %}{% endif %}
+{% if monitor.status == 8 or monitor.status == "LOOKS_DOWN" %}{% assign background_color_class = 'bg--warning' %}{% endif %}
+{% if monitor.status == 1 or monitor.status == "STARTED" %}{% assign background_color_class = 'bg--warning' %}{% endif %}
 <div class="item">
   <div class="meta {{ background_color_class }} w--7 px--1">
     {% render "status_icon" with monitor as monitor %}
