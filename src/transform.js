@@ -6,12 +6,15 @@ function transform(input) {
       : null;
 
   const errorMessage = (input.error && input.error.message)
-    || (typeof input.error === "string" && input.error)
     || input.message
+    || (typeof input.error === "string" && input.error)
     || (monitors === null ? "Unexpected response from UptimeRobot" : null);
 
   const statusToString = (status) => {
-    if (typeof status === "string") return status.toUpperCase();
+    if (typeof status === "string") {
+      const normalized = status.toUpperCase();
+      return normalized === "NOT_STARTED" ? "STARTED" : normalized;
+    }
     if (status === 0) return "PAUSED";
     if (status === 1) return "STARTED";
     if (status === 2) return "UP";

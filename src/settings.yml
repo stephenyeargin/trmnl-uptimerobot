@@ -6,7 +6,7 @@ static_data: ''
 polling_verb: get
 framework_version: latest
 serverless_language: node
-polling_url: https://api.uptimerobot.com/v3/monitors
+polling_url: https://api.uptimerobot.com/v3/monitors?limit=200
 polling_headers: authorization=Bearer%20{{ uptimerobot_api_key }}
 polling_body: ''
 id: 98765
